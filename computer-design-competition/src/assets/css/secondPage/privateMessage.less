@@ -1,0 +1,171 @@
+.private-message {
+	height: 100%;
+	position: relative;
+	.msg-list {
+		float: left;
+		width: 240px;
+		border-right: 1px solid #e9eaec;
+		height: calc(100% - 40px);
+		overflow-y: auto;
+
+		&.inner {
+			// width: 265px;
+			height: 100%;
+			position: absolute;
+			/*cursor: pointer;*/
+			overflow: hidden;
+
+			.innerbox {
+				overflow-x: hidden;
+				overflow-y: auto;
+				color: #000;
+				font-size: .7rem;
+				font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, "黑体", Arial, Tahoma;
+				height: 100%;
+			}
+			/*滚动条样式*/
+			.innerbox::-webkit-scrollbar {
+				/*滚动条整体样式*/
+				width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
+				height: 4px;
+			}
+			.innerbox::-webkit-scrollbar-thumb {
+				/*滚动条里面小方块*/
+				border-radius: 5px;
+				-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+				background: rgba(0, 0, 0, 0.2);
+			}
+			.innerbox::-webkit-scrollbar-track {
+				/*滚动条里面轨道*/
+				-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+				border-radius: 0;
+				background: rgba(0, 0, 0, 0.1);
+			}
+		}
+		.msg-near {
+			border-bottom: 1px solid #e9eaec;
+			text-align: left;
+			font-size: 14px;
+			padding-left: 20px;
+			line-height: 40px;
+			height: 40px;
+			box-sizing: border-box;
+		}
+
+		.msg-list-tpl {
+			text-align: left;
+			padding: 19px 24px;
+			cursor: pointer;
+			&.active {
+				background-color: #e4e5e6;
+			}
+			img {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+			}
+
+			.talker {
+				display: inline-block;
+				padding-left: 8px;
+				h3 {
+					margin: 0;
+					font-size: 16px;
+					padding-bottom: 6px;
+				}
+				p {
+					margin: 0;
+					font-size: 14px;
+					color: #999;
+					width: 140px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+
+	.msg-content {
+		float: right;
+		width: calc(100% - 241px);
+		background: #f4f5f7;
+		height: 100%;
+		position: relative;
+		.msg-content-head {
+			border-bottom: 1px solid #e9eaec;
+			font-size: 16px;
+			box-sizing: border-box;
+			height: 40px;
+			line-height: 40px;
+			background-color: #fff;
+		}
+
+		.msg-content-content {
+			height: calc(100% - 320px);
+			text-align: left;
+      word-break: break-all;
+      padding: 20px;
+      position: relative;
+			img {
+        width: 20px;
+        height: 20px;
+				border-radius: 50%;
+        border: 1px solid black;
+        vertical-align: middle;
+      }
+      span{
+        line-height: 20px;
+        padding-left: 10px;
+      }
+      p{
+        background: #fff;
+        border-radius: 5px;
+        padding: 1px 5px;
+      }
+
+      .inner {
+        // width: 265px;
+        height: calc(100% - 40px);
+        position: absolute;
+        /*cursor: pointer;*/
+        overflow: hidden;
+  
+        .innerbox {
+          overflow-x: hidden;
+          overflow-y: auto;
+          color: #000;
+          // font-size: .7rem;
+          font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, "黑体", Arial, Tahoma;
+          height: 100%;
+        }
+        /*滚动条样式*/
+        .innerbox::-webkit-scrollbar {
+          /*滚动条整体样式*/
+          width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
+          height: 4px;
+        }
+        .innerbox::-webkit-scrollbar-thumb {
+          /*滚动条里面小方块*/
+          border-radius: 5px;
+          -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          background: rgba(0, 0, 0, 0.2);
+        }
+        .innerbox::-webkit-scrollbar-track {
+          /*滚动条里面轨道*/
+          -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          border-radius: 0;
+          background: rgba(0, 0, 0, 0.1);
+        }
+      }
+		}
+
+    .msg-write{
+      z-index: 999999;
+    }
+
+		.msg-btn {
+			float: right;
+		}
+	}
+}

@@ -8,7 +8,76 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Index',
-    component: Index
+    component: Index,
+    redirect: '/index'
+  },
+  {
+    path: '/index',
+    name: 'Index',
+    component: Index,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component:() => import('@/views/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component:() => import('@/views/Register.vue')
+  },{
+    path: '/secondPage',
+    name: 'SecondPage',
+    component:() => import('@/views/SecondPage.vue'),
+    children: [
+      {
+        path: '/secondPage/blog',
+        name: 'Blog',
+        component: () => import('@/components/secondPage/Blog.vue')
+      },
+      {
+        path: '/secondPage/blog/:blogID',
+        name: 'Blog',
+        component: () => import('@/components/secondPage/BlogEach.vue')
+      },
+      {
+        path: '/secondPage/blogWrite',
+        // name: 'Blog',
+        component: () => import('@/components/secondPage/BlogWrite.vue')
+      },{
+        path: '/secondPage/message',
+        name: 'Message',
+        component: () => import('@/components/secondPage/Message.vue')
+      },{
+        path: '/secondPage/manage',
+        name: 'Manage',
+        component: () => import('@/components/secondPage/Manage.vue')
+      },{
+        path: '/secondPage/match',
+        name: 'Match',
+        component: () => import('@/components/secondPage/Match.vue')
+      },{
+        path: '/secondPage/match/:matchID',
+        name: 'MatchEach',
+        component: () => import('@/components/secondPage/MatchEach.vue')
+      },{
+        path: '/secondPage/matchSubmit',
+        name: 'MatchSubmit',
+        component: () => import('@/components/secondPage/MatchSubmit.vue')
+      },{
+        path: '/secondPage/dynamic',
+        name: 'Dynamic',
+        component: () => import('@/components/secondPage/Dynamic.vue')
+      },{
+        path: '/secondPage/basicInfo',
+        name: 'BasicInfo',
+        component: () => import('@/components/secondPage/BasicInfo.vue')
+      },{
+        path: '/secondPage/personalPage',
+        name: 'PersonalPage',
+        component: () => import('@/components/secondPage/PersonalPage.vue')
+      }
+    ]
   },
   {
     path: '/about',
@@ -28,6 +97,11 @@ Vue.use(VueRouter)
     path: '/conversation',
     name: 'Conversation',
     component: () => import('@/views/Conversation.vue')
+  },
+  {
+    path: '/test',
+    name: 'porotrait',
+    component: () => import('@/views/porotrait.vue')
   }
 ]
 

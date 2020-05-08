@@ -1,19 +1,32 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">主页</router-link> |
+    <!-- <div id="nav"> -->
+      <!-- <index/> -->
+      <!-- <router-link to="/">主页</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/inviate">邀请</router-link> |
-      <router-link to="/conversation">聊天</router-link>
-    </div>
+      <router-link to="/conversation">聊天</router-link> -->
+    <!-- </div> -->
     <router-view/>
   </div>
 </template>
 
+<script>
+// import Index from '@/views/Index'
+
+export default {
+  // components:{
+  //   Index
+  // }
+}
+</script>
+
 <style lang="less">
 body{
-  background-color: #bfbfbf;
-  position: relative;
+  // position: relative;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
 }
 
 #app {
@@ -25,7 +38,7 @@ body{
 }
 
 #nav {
-  padding: 30px;
+  // padding: 30px;
 
   a {
     font-weight: bold;
@@ -35,5 +48,16 @@ body{
       color: #42b983;
     }
   }
+}
+
+.container{
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
 }
 </style>

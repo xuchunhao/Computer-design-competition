@@ -4,6 +4,10 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
 import store from './store'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 Vue.use(ElementUI);
 
