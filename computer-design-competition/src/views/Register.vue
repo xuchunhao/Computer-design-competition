@@ -12,7 +12,7 @@
           <el-input v-model="password" type="password" placeholder="请输入密码" prefix-icon="el-icon-lock" />
         </div>
         <el-input placeholder="请输入验证码"></el-input>
-        <el-button>注册</el-button>
+        <el-button @click="register">注册</el-button>
         <router-link to="/index" tag="el-button">返回主页</router-link>
       </div>
     </div>
@@ -21,12 +21,21 @@
 
 <script>
 import '@/assets/css/form.less'
+import api from '@/api/index.js'
 
 export default {
   data() {
     return {
-      credential: "",
+      phone: "",
       password: ""
+    }
+  },
+  methods: {
+    register() {
+      api.register({
+        phone: this.phone,
+        password: this.password
+      })
     }
   }
 }
