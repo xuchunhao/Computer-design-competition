@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import '@/assets/css/index/homepage.less';
 import Navigation from '@/components/index/homepage/Navigation';
 import Carousel from '@/components/index/homepage/Carousel'
 
@@ -17,3 +16,7 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+@import '~@/assets/css/index/homepage.less';
+</style>

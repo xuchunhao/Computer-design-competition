@@ -26,8 +26,14 @@ body{
   // position: relative;
   margin: 0;
   padding: 0;
-  background-color: #f2f2f2;
 }
+
+// body{
+//   background: url("~@/assets/image/background.jpg");
+//   background-attachment: fixed;
+//   background-size: cover;
+//   background-position: center center;
+// }
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
