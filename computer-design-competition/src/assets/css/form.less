@@ -1,21 +1,26 @@
 .content{
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  // border: 1px solid black;
-  width: 50vw;
-  height: 30vw;
+  max-width: 800px;
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 0 8px #000;
+  padding: 30px;
   
   .form{
-    padding: 0 200px;
+    padding: 0 40px;
     .form-line{
-      padding: 30px;
+      padding: 20px 20px;
+    }
+    .form-btn{
+      padding: 20px 0;
     }
   }
+}
+
+.login,.register{
+  height: 100%;
+  // background: url("~@/assets/image/form.jpg");
+  background: linear-gradient(0deg,rgba(208,231,251,.7), rgba(152,193,236) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

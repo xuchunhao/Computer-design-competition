@@ -20,11 +20,15 @@
           </el-menu-item>
           <el-submenu index="3">
             <template slot="title">消息</template>
-            <el-menu-item index="3-1">系统通知</el-menu-item>
-            <el-menu-item index="3-2">
-              <router-link to="/secondPage/message" tag="div">私信</router-link>
+            <el-menu-item index="3-1">
+              <router-link :to="{ path: '/secondPage/message', messageKind:'systemNotice'}" tag="div">系统通知</router-link>
             </el-menu-item>
-            <el-menu-item index="3-3">公告</el-menu-item>
+            <el-menu-item index="3-2">
+              <router-link :to="{ path: '/secondPage/message', messageKind:'privateMessage'}" tag="div">私信</router-link>
+            </el-menu-item>
+            <el-menu-item index="3-3">
+              <router-link :to="{ path: '/secondPage/message', messageKind:'notice'}" tag="div">公告</router-link>
+            </el-menu-item>
           </el-submenu>
           <el-submenu index="4">
             <template slot="title">用户名</template>
@@ -34,7 +38,9 @@
             <el-menu-item index="4-2">
               <router-link to="/secondPage/personalPage" tag="div">个人主页</router-link>
             </el-menu-item>
-            <el-menu-item index="4-3">退出</el-menu-item>
+            <el-menu-item index="4-3">
+              <router-link to="/index" tag="div">退出</router-link>
+            </el-menu-item>
           </el-submenu>
         </el-menu>
       </div>

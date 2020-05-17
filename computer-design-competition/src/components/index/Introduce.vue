@@ -4,7 +4,7 @@
       <el-row class="introduce-box">
         <el-col :md="12">
           <div data-aos="zoom-in-right" class="introduce-image">
-            <img style="width:100%" src="@/assets/image/test.jpg" alt />
+            <img style="width:100%" src="@/assets/image/introduce1.jpg" alt />
           </div>
         </el-col>
         <el-col :md="12">
@@ -17,20 +17,38 @@
         </el-col>
         <el-col :md="12">
           <div data-aos="zoom-in-left" class="introduce-image">
-            <img style="width:100%" src="@/assets/image/test.jpg" alt />
+            <img style="width:100%" src="@/assets/image/introduce2.jpg" alt />
           </div>
         </el-col>
       </el-row>
       <el-row class="introduce-box">
         <el-col :md="12">
           <div data-aos="zoom-in-right" class="introduce-image">
-            <img style="width:100%" src="@/assets/image/test.jpg" alt />
+            <img style="width:100%" src="@/assets/image/introduce3.jpg" alt />
           </div>
         </el-col>
         <el-col :md="12">
           <div class="introduce-text">你可以关注喜欢的用户，及时了解他的动态，并可以和他即时聊天，分享技能和组队</div>
         </el-col>
       </el-row>
+      <div class="reaction-box">
+        <h1>反馈</h1>
+        <el-row class="reaction-input">
+          <el-col :md="12">
+            <p>用户名</p>
+            <el-input></el-input>
+            <p>E-mail</p>
+            <el-input></el-input>
+            <p>内容</p>
+            <el-input type="textarea" :rows="4"></el-input>
+            <el-button>提交</el-button>
+          </el-col>
+          <el-col class="share-box" :md="12">
+            <h3>分享</h3>
+            <share :config="config"></share>
+          </el-col>
+        </el-row>
+      </div>
     </div>
   </div>
 </template>
@@ -40,7 +58,11 @@ import "@/assets/css/index/introduce.less";
 
 export default {
   data() {
-    return {};
-  }
+    return {
+      config:{
+        sites   : ['qzone', 'qq', 'weibo','wechat'], // 启用的站点
+      },
+    };
+  },
 };
 </script>

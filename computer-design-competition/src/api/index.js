@@ -5,7 +5,10 @@ var api = {
     return axios.post('/api/captcha',params)
   },
   register(params) {
-    return axios.post('/api/user/register',params)
+    return axios.post('/api/register',params)
+  },
+  login(params) {
+    return axios.post('/api/login',params)
   }
 }
 

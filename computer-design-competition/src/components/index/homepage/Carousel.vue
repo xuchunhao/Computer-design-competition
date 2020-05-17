@@ -2,8 +2,8 @@
   <div class="carousel">
     <div class="container">
       <el-carousel indicator-position="outside" class="carousel-box">
-        <el-carousel-item v-for="item in 4" :key="item">
-          <img src="@/assets/image/test.jpg" alt="">
+        <el-carousel-item v-for="item in 3" :key="item">
+          <img :src="require('@/assets/image/pic' + item + '.jpg')" alt="">
         </el-carousel-item>
       </el-carousel>
     </div>
