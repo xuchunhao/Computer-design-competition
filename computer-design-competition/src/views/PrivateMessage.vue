@@ -25,12 +25,12 @@
       <div class="msg-content-content">
         <div class="inner">
           <div class="innerbox">
-          <div v-for="(item, index) in conversation" :key="index">
-          <img :src="item.img" alt="" />
-          <span>{{item.name}}</span>
-          <p v-html="item.content"></p>
-        </div>
-        </div>
+            <div v-for="(item, index) in conversation" :key="index">
+              <img :src="item.img" alt />
+              <span>{{item.name}}</span>
+              <p v-html="item.content"></p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="msg-write">
@@ -164,12 +164,12 @@ export default {
     };
   },
   methods: {
-    send(e){
+    send(e) {
       let obj = {
         name: this.user,
-        img:this.img,
+        img: this.img,
         content: this.detail
-      }
+      };
       this.conversation.push(obj);
     },
     changeIndex(index) {

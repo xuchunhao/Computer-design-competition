@@ -10,7 +10,9 @@
         </ul>
       </aside>
       <div class="message-box">
-        <private-message></private-message>
+        <s-notice v-if="messageKind == 'snotice'"></s-notice>
+        <private-message v-if="messageKind == 'privateMessage'"></private-message>
+        <notice v-if="messageKind == 'notice'"></notice>
       </div>
     </div>
   </div>
@@ -19,11 +21,15 @@
 
 <script>
 import '@/assets/css/secondPage/message.less'
+import sNotice from '@/views/SNotice.vue'
 import privateMessage from '@/views/PrivateMessage.vue'
+import notice from '@/views/Notice.vue'
 
 export default {
   components:{
-    privateMessage
+    privateMessage,
+    sNotice,
+    notice
   },
   data() {
     return {
