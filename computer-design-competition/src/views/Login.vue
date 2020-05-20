@@ -48,7 +48,7 @@ export default {
           }
         })
         .then(res => {
-          if (res.data.data.status == 0) {
+          if (res.data.data.errmsg == "OK") {
               this.$message({
                 message: "登录成功",
                 type: "success"
