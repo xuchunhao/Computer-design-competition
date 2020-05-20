@@ -48,9 +48,19 @@ export default {
           }
         })
         .then(res => {
-          console.log(res);
+          if (res.data.data.status == 0) {
+              this.$message({
+                message: "登录成功",
+                type: "success"
+              });
+              localStorage.setItem("token", res.data.data.token);
+              this.$router.push({ path: "/secondPage/blog"});
+            } else {
+              this.$message.error("登录失败");
+            }
+        }, error=> {
+          console.log(error)
         });
-      this.$router.push({ path: "/secondPage/blog" });
     }
   }
 };

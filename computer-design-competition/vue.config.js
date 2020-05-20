@@ -5,10 +5,10 @@ module.exports = {
     port: '10086',
     proxy:{
       '/api': {
-        target: 'https://176.16.0.2'
+        target: 'http://111.231.231.118'
       },
       '/user': {
-        target: 'https://176.16.0.2'
+        target: 'http://111.231.231.118'
       }
     }
   },

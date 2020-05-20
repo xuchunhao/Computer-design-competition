@@ -29,6 +29,7 @@
 <script>
 import "@/assets/css/secondPage/blogWrite.less";
 import wangeditor from '@/components/wangeditor.vue'
+import api from "@/api/index.js";
 
 export default {
   components:{
@@ -81,7 +82,21 @@ export default {
       console.log(val);
     },
     blogWrite(){
-      this.$router.push({path: "/secondPage/blog"});
+      let token = localStorage.getItem('token');
+      api.blogRelease({
+        type: 'blog',
+        data:{
+          title: this.title,
+          tag: this.tag,
+          content: this.detail,
+          user_id: token
+        }
+      }).then(res=>{
+        console.log(res)
+      },error=>{
+        console.log(error)
+      })
+      //this.$router.push({path: "/secondPage/blog"});
     }
   }
 };

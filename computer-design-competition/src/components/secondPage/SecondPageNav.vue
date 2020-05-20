@@ -21,13 +21,13 @@
           <el-submenu index="3">
             <template slot="title">消息</template>
             <el-menu-item index="3-1">
-              <router-link :to="{ path: '/secondPage/message', messageKind:'systemNotice'}" tag="div">系统通知</router-link>
+              <router-link :to="{ name: 'Message', params: {messageKind:'systemNotice'}}" tag="div">系统通知</router-link>
             </el-menu-item>
             <el-menu-item index="3-2">
-              <router-link :to="{ path: '/secondPage/message', messageKind:'privateMessage'}" tag="div">私信</router-link>
+              <router-link :to="{ name: 'Message', params: {messageKind:'privateMessage'}}" tag="div">私信</router-link>
             </el-menu-item>
             <el-menu-item index="3-3">
-              <router-link :to="{ path: '/secondPage/message', messageKind:'notice'}" tag="div">公告</router-link>
+              <router-link :to="{ name: 'Message', params: {messageKind:'notice'}}" tag="div">公告</router-link>
             </el-menu-item>
           </el-submenu>
           <el-submenu index="4">

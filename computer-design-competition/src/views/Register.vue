@@ -1,18 +1,22 @@
 <template>
   <div class="register">
     <div class="content">
-      <h1 class="title">
-        注册
-      </h1>
+      <h1 class="title">注册</h1>
       <div class="form">
         <div class="form-line">
           <el-input v-model="phone" type="text" placeholder="请输入手机号" prefix-icon="el-icon-phone" />
         </div>
         <div class="form-line">
-          <el-input v-model="password" type="password" placeholder="请输入密码" prefix-icon="el-icon-lock" />
+          <el-input
+            v-model="password"
+            type="password"
+            placeholder="请输入密码"
+            prefix-icon="el-icon-lock"
+          />
         </div>
-        <div class="form-line">
-          <el-input placeholder="请输入验证码"></el-input>
+        <div class="form-line-more">
+          <el-button @click="getSms">获取验证码</el-button>
+          <el-input v-model="sms" placeholder="请输入验证码"></el-input>
         </div>
         <div class="form-btn">
           <el-button @click="register">注册</el-button>
@@ -24,26 +28,74 @@
 </template>
 
 <script>
-import api from '@/api/index.js'
+import api from "@/api/index.js";
 
 export default {
   data() {
     return {
       phone: "",
-      password: ""
-    }
+      password: "",
+      sms: ""
+    };
   },
   methods: {
     register() {
-      api.register({
-        phone: this.phone,
-        password: this.password
-      })
+      api
+        .register({
+          type: "sms",
+          data: {
+            phone: this.phone,
+            sms: this.sms,
+            pwd: this.password
+          }
+        })
+        .then(
+          res => {
+            if (res.data.status == 0) {
+              this.$message({
+                message: "注册成功",
+                type: "success"
+              });
+//var foo = localStorage.getItem("bar");  
+// // ...  
+// localStorage.setItem("bar", foo);  
+              localStorage.setItem("token", res.data.data.token);
+              this.$router.push({ path: "/secondPage/blog"});
+            } else {
+              this.$message.error("注册失败");
+            }
+          },
+          error => {
+            console.log(error);
+          }
+        );
+    },
+    getSms() {
+      api
+        .register({
+          type: "phone",
+          data: {
+            phone: this.phone
+          }
+        })
+        .then(res => {
+          console.log(res,res.data)
+          if (res.data.status == 0) {
+            this.$message({
+              message: "验证码已发送",
+              type: "success"
+            });
+          } else {
+            this.$message.error("验证码发送失败");
+          }
+        }, error => {
+          console.log(error)
+        });
     }
   }
-}
+};
 </script>
 
 <style lang="less" scoped>
-  @import '~@/assets/css/form.less';
+@import "~@/assets/css/form.less";
 </style>

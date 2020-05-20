@@ -36,8 +36,9 @@ export default {
     }
   },
   created() {
-    this.messageKind = this.$router.params.messageKind;
-    console.log(this.messageKind)
+    this.messageKind = this.$route.params.messageKind;
+    // this.chooseMessageKind()
+    // console.log(this.messageKind,this.$route)
   }
 }
 </script>

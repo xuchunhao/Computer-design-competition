@@ -49,6 +49,7 @@
           </el-col>
         </el-row>
       </div>
+      <a href="http://www.beian.gov.cn">浙ICP备19046299号-1</a>
     </div>
   </div>
 </template>

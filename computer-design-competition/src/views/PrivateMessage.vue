@@ -34,9 +34,9 @@
         </div>
       </div>
       <div class="msg-write">
-        <wangeditor class="wangeditor" v-model="detail" :isClear="isClear" @change="change"></wangeditor>
+        <wangeditor class="wangeditor" v-model="detail" :isClear="isClear"></wangeditor>
       </div>
-      <el-button class="msg-btn">发送</el-button>
+      <el-button class="msg-btn" @click="send">发送</el-button>
     </div>
   </div>
 </template>
@@ -51,6 +51,8 @@ export default {
   },
   data() {
     return {
+      user: "lalala",
+      img: require("@/assets/image/test.jpg"),
       detail: "",
       isClear: false,
       thisIndex: 0,
@@ -162,6 +164,14 @@ export default {
     };
   },
   methods: {
+    send(e){
+      let obj = {
+        name: this.user,
+        img:this.img,
+        content: this.detail
+      }
+      this.conversation.push(obj);
+    },
     changeIndex(index) {
       this.thisIndex = index;
     }

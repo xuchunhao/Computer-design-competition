@@ -4,7 +4,7 @@
       <div class="input-content">
         <div class="input-box">账号：<el-input v-model="id"></el-input></div>
         <div class="input-box">用户名：<el-input v-model="nickname"></el-input></div>
-        <el-button icon="el-icon-search">搜索</el-button>
+        <el-button icon="el-icon-search" @click="search">搜索</el-button>
       </div>
       <div class="input-content"></div>
       <table>
@@ -17,13 +17,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(person, index) in personArray" :key="index">
+          <tr v-for="(person, index) in endArray" :key="index">
             <td>{{ person.id }}</td>
             <td><img :src="person.img" alt=""></td>
             <td>{{ person.nickname }}</td>
             <td><el-button type="danger">邀请</el-button></td>
           </tr>
         </tbody>
+        <el-pagination @current-change="paging" layout="prev, pager, next" :total="total*10"></el-pagination>
       </table>
     </div>
   </div>
@@ -35,6 +36,7 @@ import '@/assets/css/secondPage/manage.less'
 export default {
   data () {
     return {
+      // total:1,
       id: "",
       nickname: "",
       personArray: [
@@ -57,9 +59,255 @@ export default {
           id: 123456,
           img: require('@/assets/image/test.jpg'),
           nickname: "lalala",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        }
+      ],
+      tempArray: [
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        }
+      ],
+      endArray: [
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "lalala",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
+        },
+        {
+          id: 654321,
+          img: require('@/assets/image/test.jpg'),
+          nickname: "sdfghj",
         }
       ]
     }
+  },
+  computed:{
+    total() {
+      return this.tempArray.length/10;
+    }
+  },
+  methods: {
+    paging(e) {
+      let chunk = 10;
+      this.endArray = this.tempArray.slice( (e-1)*chunk, e*chunk);
+    },
+    search() {
+      var that = this;
+      this.tempArray = this.personArray.filter(function(person){
+        return person.id.toString().indexOf(that.id)>-1&&person.nickname.indexOf(that.nickname)>-1;
+      })
+      this.paging(1);
+    }
+  },
+  created() {
+    this.paging(1);
+    // this.total = this.tempArray.length/10;
   }
 }
 </script>

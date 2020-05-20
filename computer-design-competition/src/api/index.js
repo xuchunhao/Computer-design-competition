@@ -9,6 +9,12 @@ var api = {
   },
   login(params) {
     return axios.post('/api/login',params)
+  },
+  blogSearch(params){
+    return axios.post('/api/blog/search',params)
+  },
+  blogRelease(params){
+    return axios.post('/api/blog/release',params)
   }
 }
 
