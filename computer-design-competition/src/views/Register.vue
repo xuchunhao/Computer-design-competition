@@ -54,7 +54,8 @@ export default {
             if (res.data.status == 0) {
               this.$message({
                 message: "注册成功",
-                type: "success"
+                type: "success",
+                offset: 100
               });
 //var foo = localStorage.getItem("bar");  
 // // ...  
@@ -62,7 +63,11 @@ export default {
               localStorage.setItem("token", res.data.data.token);
               this.$router.push({ path: "/secondPage/blog"});
             } else {
-              this.$message.error("注册失败");
+              this.$message({
+                message: "注册失败",
+                type: "error",
+                offset: 100
+              });
             }
           },
           error => {
@@ -83,10 +88,15 @@ export default {
           if (res.data.status == 0) {
             this.$message({
               message: "验证码已发送",
-              type: "success"
+              type: "success",
+              offset: 100
             });
           } else {
-            this.$message.error("验证码发送失败");
+            this.$message({
+                message: "验证码发送失败",
+                type: "error",
+                offset: 100
+              });
           }
         }, error => {
           console.log(error)

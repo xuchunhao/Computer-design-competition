@@ -58,6 +58,7 @@
 
 <script>
 import { VueCropper } from "vue-cropper";
+import api from "@/api/index.js";
 
 export default {
   components: {
@@ -99,12 +100,12 @@ export default {
       this.previews = data;
     },
     //加载头像信息
-    find() {
-      this.userId = sessionStorage.getItem("userId");
-      this.$axios.post("/api/attach/find", this.attach).then(res => {
-        // console.log(res);
-      });
-    },
+    // find() {
+    //   this.userId = sessionStorage.getItem("userId");
+    //   this.$axios.post("/api/attach/find", this.attach).then(res => {
+    //     // console.log(res);
+    //   });
+    // },
     //选择本地图片
     uploadImg(e, num) {
       var file = e.target.files[0];
@@ -129,7 +130,18 @@ export default {
     },
     //确认截图,上传
     cut(type) {
+      let token = localStorage.getItem("token");
       this.$refs.cropper.getCropData(res => {
+        api.upimg({
+          type:'img',
+          data: {
+            user_id: token,
+            base64: res
+          }
+        }).then(res => {
+          console.log(res)
+          // this.$router.go(0)
+        })
         //res是裁剪后图片的bolb对象
         // api.changePortrait({
         //     "id":1234,
@@ -144,6 +156,17 @@ export default {
         //     })
       });
     }
+  },
+  created() {
+    let token = localStorage.getItem("token");
+    api.loadimg({
+      type:'img',
+      data: {
+        user_id: token
+      }
+    }).then(res => {
+      this.img = res.data.data.base64;
+    })
   }
 };
 </script>

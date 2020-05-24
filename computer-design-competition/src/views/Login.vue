@@ -51,12 +51,17 @@ export default {
           if (res.data.data.errmsg == "OK") {
               this.$message({
                 message: "登录成功",
-                type: "success"
+                type: "success",
+                offset: 100
               });
               localStorage.setItem("token", res.data.data.token);
               this.$router.push({ path: "/secondPage/blog"});
             } else {
-              this.$message.error("登录失败");
+              this.$message({
+                message: "登录失败",
+                type: "error",
+                offset: 100
+              });
             }
         }, error=> {
           console.log(error)

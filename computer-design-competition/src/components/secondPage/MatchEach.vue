@@ -2,11 +2,11 @@
   <div class="match-each">
     <div class="container">
       <div class="match-each-box">
-        <h1>{{ matchInfo.match }}</h1>
-        <p>队长：{{ matchInfo.caption }}</p>
-        <p>队伍名：{{ matchInfo.team }}</p>
-        <p>当前人数：{{ matchInfo.person }}</p>
-        <p>队伍需求：{{ matchInfo.require }}</p>
+        <h1>{{ matchInfo.demand_name }}</h1>
+        <p>队长：{{ team_leader }}</p>
+        <p>队伍名：{{ matchInfo.team_name }}</p>
+        <p>当前人数：{{ matchInfo.team_mem_num }}</p>
+        <p>队伍需求：{{ matchInfo.team_needs }}</p>
         <div class="match-each-btn">
           <el-button>私聊</el-button>
           <el-button>加入</el-button>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import api from "@/api/index.js";
+
 export default {
   data() {
     return {
@@ -28,13 +30,30 @@ export default {
         team: "xx队",
         person: 1,
         require: "我们需要balalala",
-        matchID: 123
-      }
+        matchID: 123,
+        team_leader_name: "xxx"
+      },
+      team_leader:""
     };
   },
   created() {
     this.matchID = this.$route.params.matchID;
-    console.log(this.matchID);
+    api.demandid({
+      type:'demand',
+      data: {
+        demand_id: this.matchID
+      }
+    }).then(res => {
+      this.matchInfo = res.data.data[0];
+      api.infoSearch({
+        type: 'user_info',
+        data: {
+          user_id: this.matchInfo.team_leader
+        }
+      }).then(res => {
+        this.team_leader = res.data.data.nick_name;
+      })
+    })
   }
 };
 </script>

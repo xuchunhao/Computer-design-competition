@@ -19,9 +19,12 @@
       </div>
       <div class="blog-write-content">
         <label for="">内容：</label>
-        <wangeditor class="wangeditor" v-model="detail" :isClear="isClear" @change="change"></wangeditor>
+        <wangeditor class="wangeditor" v-model="detail" :isClear="isClear"></wangeditor>
       </div>
-      <el-button @click="blogWrite" class="blog-write-btn">发布</el-button>
+      <div class="blog-write-btn">
+        <el-button @click="blogWrite">发布</el-button>
+        <router-link to="/secondPage/blog" tag="el-button">返回</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -39,7 +42,7 @@ export default {
     return {
       options: [
         {
-          value: "recommand",
+          value: "recmd",
           label: "推荐"
         },
         {
@@ -55,13 +58,13 @@ export default {
           label: "大数据"
         },
         {
-          value: "ai",
+          value: "AI",
           label: "人工智能"
         },{
           value: "blockchain",
           label: "区块链"
         },{
-          value: "fiveg",
+          value: "5G",
           label: "5G"
         },{
           value: "game",
@@ -78,9 +81,6 @@ export default {
     };
   },
   methods: {
-    change(val) {
-      console.log(val);
-    },
     blogWrite(){
       let token = localStorage.getItem('token');
       api.blogRelease({
@@ -92,7 +92,20 @@ export default {
           user_id: token
         }
       }).then(res=>{
-        console.log(res)
+        console.log(res.data.errmsg)
+        if(res.data.status == 0){
+          this.$message({
+            message: "添加成功",
+            type: "success",
+            offset: 100
+          });
+        }else{
+          this.$message({
+            message: "添加失败",
+            type: "error",
+            offset: 100
+          });
+        }
       },error=>{
         console.log(error)
       })

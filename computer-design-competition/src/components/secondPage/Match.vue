@@ -10,12 +10,12 @@
       <div class="match-box">
         <el-row>
           <el-col v-for="(match, index) in endList" :key="index" :md="12">
-            <router-link tag="div" :to="'/secondPage/match/' + match.matchID" class="match-every">
-              <h1>{{ match.match }}</h1>
-              <p>队长：{{ match.caption }}</p>
-              <p>队伍名：{{ match.team }}</p>
-              <p>当前人数：{{ match.person }}</p>
-              <p>队伍需求：{{ match.require }}</p>
+            <router-link tag="div" :to="'/secondPage/match/' + match.team_id" class="match-every">
+              <h1>{{ match.demand_name }}</h1>
+              <p>队长：{{ match.teamAuthorName }}</p>
+              <p>队伍名：{{ match.team_name }}</p>
+              <p>当前人数：{{ match.team_mem_num }}</p>
+              <p>队伍需求：{{ match.team_needs }}</p>
             </router-link>
           </el-col>
         </el-row>
@@ -26,256 +26,67 @@
 </template>
 
 <script>
-import "@/assets/css/secondPage/match.less"
+import "@/assets/css/secondPage/match.less";
+import api from "@/api/index.js";
 
 export default {
   data() {
     return {
       match: "",
-      matchList: [
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '多媒体设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '多媒体设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '多媒体设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        }
-      ],
-      tempList: [
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '多媒体设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '多媒体设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '多媒体设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        }
-      ],
-      endList: [
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '多媒体设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '多媒体设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '多媒体设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        },
-        {
-          match: '计算机设计大赛',
-          caption: 'xxx',
-          team: 'xx队',
-          person: 1,
-          require: '我们需要balalala',
-          matchID: 123
-        }
-      ]
+      matchList: [],
+      tempList: [],
+      endList: []
     };
   },
-  computed:{
+  computed: {
     total() {
-      return this.tempList.length/4;
+      return this.tempList.length / 4;
     }
   },
-  methods:{
-    paging(e){
+  methods: {
+    paging(e) {
       let chunk = 4;
-      this.endList = this.tempList.slice( (e-1)*chunk, e*chunk);
+      this.endList = this.tempList.slice((e - 1) * chunk, e * chunk);
     },
     search() {
       var that = this;
-      this.tempList = this.matchList.filter(function(match){
-        return match.match.indexOf(that.match)>-1;
-      })
+      this.tempList = this.matchList.filter(function(match) {
+        return match.demand_name.indexOf(that.match) > -1;
+      });
       this.paging(1);
     }
   },
   created() {
-    this.paging(1);
+    // this.paging(1);
+    api
+      .demandsList({
+        type: "demands"
+      })
+      .then(res => {
+        let newArr = res.data.data.map((match, index, arr) => {
+          api
+            .infoSearch({
+              type: "user_info",
+              data: {
+                user_id: match.team_leader
+              }
+            })
+            .then(res => {
+              match.teamAuthorName = res.data.data.nick_name;
+            });
+          return match;
+        });
+        var that = this;
+        setTimeout(function() {
+          that.matchList = newArr;
+          that.tempList = that.matchList;
+          that.paging(1);
+        }, 500);
+        console.log(this.tempList);
+        // this.matchList = newArr;
+        // this.tempList = this.matchList;
+        // this.paging(1);
+      });
   }
 };
 </script>

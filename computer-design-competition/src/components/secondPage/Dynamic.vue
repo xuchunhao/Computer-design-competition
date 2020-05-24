@@ -19,6 +19,7 @@
 <script>
 import wangeditor from '@/components/wangeditor.vue'
 import '@/assets/css/secondPage/dynamic.less'
+import api from "@/api/index.js";
 
 export default {
   components:{
@@ -108,13 +109,23 @@ export default {
   },
   methods: {
     release() {
-      let obj = {
-        content: this.detail,
-        user: this.user,
-        img: this.img,
-        create_time: this.create_time
-      }
-      this.dynamicList.push(obj);
+      // let obj = {
+      //   content: this.detail,
+      //   user: this.user,
+      //   img: this.img,
+      //   create_time: this.create_time
+      // }
+      // this.dynamicList.push(obj);
+      let token = localStorage.getItem('token');
+      api.updateRelease({
+        type: 'update',
+        data: {
+          user: token,
+          content: this.detail
+        }
+      }).then(res=> {
+        console.log(res)
+      })
       this.paging(1);
     },
     paging(e){
@@ -123,6 +134,15 @@ export default {
     }
   },
   created() {
+    let token = localStorage.getItem('token');
+    api.updateList({
+      type: 'update',
+      data: {
+        user_id: token
+      }
+    }).then(res => {
+      console.log(res)
+    })
     this.paging(1);
   }
 }
