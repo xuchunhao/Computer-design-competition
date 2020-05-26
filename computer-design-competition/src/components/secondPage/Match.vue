@@ -13,6 +13,7 @@
             <router-link tag="div" :to="'/secondPage/match/' + match.team_id" class="match-every">
               <h1>{{ match.demand_name }}</h1>
               <p>队长：{{ match.teamAuthorName }}</p>
+              <p>队伍id：{{ match.team_id }}</p>
               <p>队伍名：{{ match.team_name }}</p>
               <p>当前人数：{{ match.team_mem_num }}</p>
               <p>队伍需求：{{ match.team_needs }}</p>

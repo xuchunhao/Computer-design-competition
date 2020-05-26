@@ -44,6 +44,7 @@
 <script>
 import "@/assets/css/secondPage/privateMessage.less";
 import wangeditor from "@/components/wangeditor.vue";
+import api from "@/api/index.js";
 
 export default {
   components: {
@@ -175,6 +176,17 @@ export default {
     changeIndex(index) {
       this.thisIndex = index;
     }
+  },
+  created() {
+    let token = localStorage.getItem('token');
+    api.getmsgList({
+      type: 'msg',
+      data: {
+        user_id: 'token'
+      }
+    }).then(res => {
+      console.log(res);
+    })
   }
 };
 </script>

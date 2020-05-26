@@ -125,6 +125,9 @@ export default {
         }
       }).then(res=> {
         console.log(res)
+        if(res.data.status == 0) {
+          this.$router.go(0);
+        }
       })
       this.paging(1);
     },

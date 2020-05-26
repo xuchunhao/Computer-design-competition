@@ -5,15 +5,15 @@
       <div class="info-fans clearfix">
         <div class="info-fans-list">
           <p>关注</p>
-          <p>{{ userinfo.follower_num }}</p>
+          <p>{{ follower_num }}</p>
         </div>
         <div class="info-fans-list">
           <p>粉丝</p>
-          <p>{{ userinfo.followed_num }}</p>
+          <p>{{ followed_num }}</p>
         </div>
         <div class="info-fans-list">
           <p>获赞</p>
-          <p>{{ userinfo.star_num }}</p>
+          <p>{{ star_num }}</p>
         </div>
       </div>
       <div class="info-box">
@@ -46,6 +46,9 @@ export default {
   },
   data() {
     return {
+      followed_num: 0,
+      follower_num: 0,
+      star_num: 0,
       userinfo: {
         user: "作者1",
         img: require("@/assets/image/test.jpg"),
@@ -119,7 +122,7 @@ export default {
         user_id: token
       }
     }).then(res => {
-      this.userinfo.followed_num = res.data.data.num;
+      this.followed_num = res.data.data.num;
     })
     api.getinfo({
       type: 'follower_num',
@@ -127,7 +130,7 @@ export default {
         user_id: token
       }
     }).then(res => {
-      this.userinfo.follower_num = res.data.data.num;
+      this.follower_num = res.data.data.num;
     })
     api.getinfo({
       type: 'star_num',
@@ -135,7 +138,7 @@ export default {
         user_id: token
       }
     }).then(res => {
-      this.userinfo.star_num = res.data.data.num;
+      this.star_num = res.data.data.num;
     })
   }
 };

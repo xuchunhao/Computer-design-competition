@@ -4,6 +4,7 @@
       <div class="match-each-box">
         <h1>{{ matchInfo.demand_name }}</h1>
         <p>队长：{{ team_leader }}</p>
+        <p>队伍id：{{ matchInfo.team_id }}</p>
         <p>队伍名：{{ matchInfo.team_name }}</p>
         <p>当前人数：{{ matchInfo.team_mem_num }}</p>
         <p>队伍需求：{{ matchInfo.team_needs }}</p>

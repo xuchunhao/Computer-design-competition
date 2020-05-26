@@ -1,7 +1,7 @@
 <template>
   <div class="second-page-nav">
     <div class="container clearfix">
-      <router-link to="/secondPage/manage" tag="div" class="manage-box">管理</router-link>
+      <div class="manage-box">智能化组队管理系统</div>
       <div class="navs">
         <el-menu
           :default-active="activeIndex"
@@ -9,8 +9,14 @@
           mode="horizontal"
           @select="handleSelect"
         >
+          <el-menu-item index="-2">
+            <router-link to="/index" tag="div">主页</router-link>
+          </el-menu-item>
           <el-menu-item index="0">
             <router-link to="/secondPage/blog" tag="div">博客</router-link>
+          </el-menu-item>
+          <el-menu-item index="-1">
+            <router-link to="/secondPage/manage" tag="div" class="manage-box">管理</router-link>
           </el-menu-item>
           <el-menu-item index="1">
             <router-link to="/secondPage/match" tag="div">需求大厅</router-link>
@@ -31,15 +37,15 @@
             </el-menu-item>
           </el-submenu>
           <el-submenu index="4">
-            <template slot="title">用户名</template>
+            <template slot="title">个人中心</template>
             <el-menu-item index="4-1">
               <router-link to="/secondPage/basicInfo" tag="div">基本资料</router-link>
             </el-menu-item>
             <el-menu-item index="4-2">
-              <router-link to="/secondPage/personalPage" tag="div">个人主页</router-link>
+              <router-link to="/secondPage/personalSkill" tag="div">个人技能</router-link>
             </el-menu-item>
             <el-menu-item index="4-3">
-              <router-link to="/index" tag="div">退出</router-link>
+              <router-link to="/secondPage/personalPage" tag="div">个人主页</router-link>
             </el-menu-item>
           </el-submenu>
         </el-menu>

@@ -76,6 +76,10 @@ Vue.use(VueRouter)
         path: '/secondPage/personalPage',
         name: 'PersonalPage',
         component: () => import('@/components/secondPage/PersonalPage.vue')
+      },{
+        path: '/secondPage/personalSkill',
+        name: 'PersonalSkill',
+        component: () => import('@/components/secondPage/PersonalSkill.vue')
       }
     ]
   },

@@ -31,6 +31,7 @@
           <div class="introduce-text">你可以关注喜欢的用户，及时了解他的动态，并可以和他即时聊天，分享技能和组队</div>
         </el-col>
       </el-row>
+      <carousel/>
       <div class="reaction-box">
         <h1>反馈</h1>
         <el-row class="reaction-input">
@@ -56,6 +57,7 @@
 
 <script>
 import "@/assets/css/index/introduce.less";
+import Carousel from '@/components/index/homepage/Carousel'
 
 export default {
   data() {
@@ -65,5 +67,8 @@ export default {
       },
     };
   },
+  components: {
+    Carousel
+  }
 };
 </script>

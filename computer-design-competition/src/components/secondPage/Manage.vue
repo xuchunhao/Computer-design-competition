@@ -2,11 +2,13 @@
   <div class="manage">
     <div class="container">
       <div class="input-content">
-        <div class="input-box">账号：<el-input v-model="id"></el-input></div>
+        <div class="input-box">个人技能：<el-input v-model="id"></el-input></div>
         <div class="input-box">用户名：<el-input v-model="nickname"></el-input></div>
         <el-button icon="el-icon-search" @click="search">搜索</el-button>
       </div>
-      <div class="input-content"></div>
+      <div class="input-content">
+        <div class="input-box">队伍id：<el-input v-model="id"></el-input></div>
+      </div>
       <table>
         <thead>
           <tr>
@@ -289,12 +291,12 @@ export default {
   },
   computed:{
     total() {
-      return this.tempArray.length/10;
+      return this.tempArray.length/8;
     }
   },
   methods: {
     paging(e) {
-      let chunk = 10;
+      let chunk = 8;
       this.endArray = this.tempArray.slice( (e-1)*chunk, e*chunk);
     },
     search() {

@@ -13,7 +13,7 @@ export default {
   name: 'Index',
   components: {
     Homepage,
-    Introduce
+    Introduce,
   }
 }
 </script>

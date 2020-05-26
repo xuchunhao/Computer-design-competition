@@ -60,6 +60,24 @@ var api = {
   },
   blogcmt(params){
     return axios.post('/api/blogcmt', params)
+  },
+  star(params){
+    return axios.post('/api/star', params)
+  },
+  follow(params){
+    return axios.post('/api/followed-follower', params)
+  },
+  getFollow(params){
+    return axios.post('/api/getfollows', params)
+  },
+  getmsgList(params){
+    return axios.post('/api/getmsglist',params)
+  },
+  getaddinfo(params){
+    return axios.post('/api/getaddinfo', params)
+  },
+  addinfo(params){
+    return axios.post('/api/add_info',params)
   }
 }
 

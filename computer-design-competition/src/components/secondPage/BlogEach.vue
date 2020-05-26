@@ -9,19 +9,20 @@
         <div class="blog-writer-info">
           <div class="blog-writer-list">
             <p>关注</p>
-            <p>{{ writerinfo.concernsNum }}</p>
+            <p>{{ writerinfo.follower_num }}</p>
           </div>
           <div class="blog-writer-list">
             <p>粉丝</p>
-            <p>{{ writerinfo.fansNum }}</p>
+            <p>{{ writerinfo.followed_num }}</p>
           </div>
           <div class="blog-writer-list">
             <p>获赞</p>
-            <p>{{ writerinfo.likesNum }}</p>
+            <p>{{ star_num }}</p>
           </div>
         </div>
-        <el-button>关注</el-button>
-        <el-button>私信</el-button>
+        <template v-if="follow == 'unfollowed'"><el-button type="danger" plain @click="followed">关注</el-button></template>
+        <template v-if="follow == 'followed'"><el-button type="danger" @click="unfollowed">已关注</el-button></template>
+        <el-button type="danger" plain>私信</el-button>
       </aside>
       <div class="blog-content">
         <h1>{{ bloginfo.blog_name }}</h1>
@@ -30,7 +31,7 @@
         <div class="blog-content-btn clearfix">
           <div class="blog-btn-box" @click="like">
             <i class="el-icon-star-off"></i>
-            点赞{{ bloginfo.blogLikesNum }}
+            点赞{{ star_num }}
           </div>
           <div class="blog-btn-box">浏览量{{ bloginfo.blogLookNum }}</div>
         </div>
@@ -57,6 +58,8 @@ import api from "@/api/index.js";
 export default {
   data() {
     return {
+      star_num: 0,
+      follow: "unfollowed",
       writerimg: "",
       blogID: 0,
       bloginfo: {
@@ -98,8 +101,47 @@ export default {
     };
   },
   methods: {
+    followed() {
+      let token = localStorage.getItem('token');
+      api.follow({
+        type: 'follow',
+        data: {
+          follower_id: token,
+          followed_id: this.bloginfo.blog_author
+        }
+      }).then(res => {
+        if(res.data.status == 0){
+          this.$router.go(0);
+          // this.follow = 'unfollowed'
+        }
+      })
+    },
+    unfollowed() {
+      let token = localStorage.getItem('token');
+      api.follow({
+        type: 'unfollow',
+        data: {
+          follower_id: token,
+          followed_id: this.bloginfo.blog_author
+        }
+      }).then(res => {
+        if(res.data.status == 0){
+          this.$router.go(0);
+          // this.follow = 'followed'
+        }
+      })
+    },
     like() {
-      this.bloginfo.blogLikesNum++;
+      api
+        .star({
+          type: "star",
+          data: {
+            blog_id: this.blogID
+          }
+        })
+        .then(res => {
+          this.star_num++;
+        });
     },
     writeComment() {
       // let newComment = {
@@ -126,6 +168,7 @@ export default {
   },
   created() {
     this.blogID = this.$route.params.blogID;
+    let token = localStorage.getItem("token");
     api
       .blogid({
         type: "blog",
@@ -134,6 +177,7 @@ export default {
         }
       })
       .then(res => {
+        console.log(res);
         this.bloginfo = res.data.data[0];
         api
           .infoSearch({
@@ -155,6 +199,50 @@ export default {
           .then(res => {
             this.writerimg = res.data.data.base64;
           });
+        api
+          .getinfo({
+            type: "followed_num",
+            data: {
+              user_id: this.bloginfo.blog_author
+            }
+          })
+          .then(res => {
+            this.writerinfo.followed_num = res.data.data.num;
+          });
+        api
+          .getinfo({
+            type: "follower_num",
+            data: {
+              user_id: this.bloginfo.blog_author
+            }
+          })
+          .then(res => {
+            this.writerinfo.follower_num = res.data.data.num;
+          });
+        api
+          .getinfo({
+            type: "star_num",
+            data: {
+              user_id: this.bloginfo.blog_author
+            }
+          })
+          .then(res => {
+            this.star_num = res.data.data.num;
+          });
+
+        api
+          .getFollow({
+            type: "followinfo",
+            data: {
+              follower_id: token,
+              followed_id: this.bloginfo.blog_author
+            }
+          })
+          .then(res => {
+            console.log(res)
+            this.follow = res.data.data.status;
+            console.log(this.follow)
+          });
       });
 
     api
@@ -165,8 +253,8 @@ export default {
         }
       })
       .then(res => {
-        console.log(res);
-        let newArr = res.data.map((comment, index, arr) => {
+        if(res.data.length > 0){
+          let newArr = res.data.map((comment, index, arr) => {
           api
             .infoSearch({
               type: "user_info",
@@ -195,9 +283,9 @@ export default {
           // that.tempArray = that.blogArray;
           // that.paging(1);
         }, 500);
+        }
       });
 
-    let token = localStorage.getItem("token");
     api
       .infoSearch({
         type: "user_info",
