@@ -166,27 +166,42 @@ export default {
   },
   methods: {
     send(e) {
-      let obj = {
-        name: this.user,
-        img: this.img,
-        content: this.detail
-      };
-      this.conversation.push(obj);
+      // let obj = {
+      //   name: this.user,
+      //   img: this.img,
+      //   content: this.detail
+      // };
+      // this.conversation.push(obj);
+      let token = localStorage.getItem('token');
+      api.sendmsg({
+        type: "msg",
+        data: {
+          sender_id: token,
+          recever_id: '482508834',
+          content: this.detail
+        }
+      }).then(res => {
+        console.log(res)
+      })
     },
     changeIndex(index) {
       this.thisIndex = index;
     }
   },
   created() {
-    let token = localStorage.getItem('token');
-    api.getmsgList({
-      type: 'msg',
-      data: {
-        user_id: 'token'
-      }
-    }).then(res => {
-      console.log(res);
-    })
+    // 482508834
+    let token = localStorage.getItem("token");
+    api
+      .getmsgList({
+        type: "msg",
+        data: {
+          user_id: "token"
+        }
+      })
+      .then(res => {
+        console.log(res);
+        this.msgList = res.data.data.id_list;
+      });
   }
 };
 </script>

@@ -3,17 +3,18 @@
     <div class="container">
       <div class="person-skill-box">
         <p>个人技能：</p>
-        <el-input type="textarea" :rows="2" placeholder="请输入您的个人技能" v-model="specialty"></el-input>
+        <el-input type="textarea" :rows="4" placeholder="请输入您的个人技能" v-model="specialty"></el-input>
       </div>
       <div class="person-skill-box">
         <p>成果：</p>
-        <el-input type="textarea" :rows="2" placeholder="请输入您的成果" v-model="achievements"></el-input>
+        <el-input type="textarea" :rows="4" placeholder="请输入您的成果" v-model="achievements"></el-input>
       </div>
       <div class="person-skill-box">
         <p>兴趣：</p>
-        <el-input type="textarea" :rows="2" placeholder="请输入您的兴趣" v-model="intrest"></el-input>
+        <el-input type="textarea" :rows="4" placeholder="请输入您的兴趣" v-model="interest"></el-input>
       </div>
     </div>
+    <el-button @click="addinfo">修改信息</el-button>
   </div>
 </template>
 
@@ -25,7 +26,24 @@ export default {
     return {
       specialty: '',
       achievements: '',
-      intrest: ''
+      interest: '',
+      infoList: {}
+    }
+  },
+  methods: {
+    addinfo() {
+      let token = localStorage.getItem('token');
+      api.addinfo({
+        type: 'info',
+        data: {
+          user_id: token,
+          specialty: this.specialty,
+          achievements: this.achievements,
+          interest: this.interest
+        }
+      }).then(res => {
+        console.log(res)
+      })
     }
   },
   created() {
@@ -37,7 +55,15 @@ export default {
       }
     }).then(res => {
       console.log(res)
+      let infoList = res.data.data.info_list;
+      this.specialty = infoList. specialty;
+      this.achievements = infoList. achievements;
+      this.interest = infoList.interest;
     })
   }
 };
 </script>
+
+<style lang="less" scoped>
+  @import '~@/assets/css/secondPage/personalSkill.less';
+</style>

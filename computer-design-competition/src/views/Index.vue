@@ -2,6 +2,7 @@
   <div class="index">
     <homepage/>
     <introduce/>
+    <el-backtop><i class="el-icon-top"></i></el-backtop>
   </div>
 </template>
 

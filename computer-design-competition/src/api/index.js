@@ -78,6 +78,15 @@ var api = {
   },
   addinfo(params){
     return axios.post('/api/add_info',params)
+  },
+  sendmsg(params){
+    return axios.post('/api/sendmsg', params)
+  },
+  getmsg(params){
+    return axios.post('/api/getmsg', params)
+  },
+  invite(params){
+    return axios.post('/api/invite', params)
   }
 }
 

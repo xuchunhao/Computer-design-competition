@@ -174,7 +174,7 @@ export default {
   },
   computed: {
     total() {
-      return this.tempArray.length / 5;
+      return this.tempArray.length / 4;
     }
   },
   methods: {
@@ -196,7 +196,7 @@ export default {
       // this.paging(1);
     },
     paging(e) {
-      let chunk = 5;
+      let chunk = 4;
       this.endArray = this.tempArray.slice((e - 1) * chunk, e * chunk);
     }
   },
@@ -241,7 +241,7 @@ export default {
             that.blogArray = newArr;
             that.tempArray = that.blogArray;
             that.paging(1);
-          }, 500);
+          }, 400);
         },
         error => {
           console.log(error);
