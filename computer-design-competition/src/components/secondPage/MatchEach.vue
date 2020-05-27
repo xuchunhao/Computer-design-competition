@@ -9,7 +9,7 @@
         <p>当前人数：{{ matchInfo.team_mem_num }}</p>
         <p>队伍需求：{{ matchInfo.team_needs }}</p>
         <div class="match-each-btn">
-          <el-button>私聊</el-button>
+          <el-button @click="message">私聊</el-button>
           <el-button @click="invite">加入</el-button>
           <router-link to="/secondPage/match" tag="el-button">返回大厅</router-link>
         </div>
@@ -38,18 +38,24 @@ export default {
     };
   },
   methods: {
-    invite() {
-      let token = localStorage.getItem('token');
-      api.invite({
-        type: 'invite',
-        data: {
-          team_id: this.matchInfo.team_id,
-          inviter_id: this.matchInfo.team_leader,
-          invited_id: token
-        }
-      }).then(res => {
-        console.log(res)
-      })
+    // invite() {
+    //   let token = localStorage.getItem('token');
+    //   api.invite({
+    //     type: 'invite',
+    //     data: {
+    //       team_id: this.matchInfo.team_id,
+    //       inviter_id: this.matchInfo.team_leader,
+    //       invited_id: token
+    //     }
+    //   }).then(res => {
+    //     console.log(res)
+    //   })
+    // },
+    invite(){
+      this.$router.push({name: 'Message', params: {messageKind:'snotice'}})
+    },
+    message(){
+      this.$router.push({name: 'Message', params: {messageKind:'privateMessage'}})
     }
   },
   created() {

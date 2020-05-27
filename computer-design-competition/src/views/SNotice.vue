@@ -17,11 +17,11 @@ export default {
     return {
       noticeArray: [
         {
-          notice: "撒娇开发的时间年福建福建三分还是你飞拉萨沙发的"
+          notice: "您向用户取个名字真难发送了组队邀请"
         },
         {
-          notice: "askjfhdasujfhujadhfujadkfdajhf"
-        }
+          notice: "用户沙雕程序员向您发送了组队邀请"
+        },
       ]
     }
   }

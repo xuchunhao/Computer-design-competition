@@ -241,7 +241,7 @@ export default {
             that.blogArray = newArr;
             that.tempArray = that.blogArray;
             that.paging(1);
-          }, 400);
+          }, 800);
         },
         error => {
           console.log(error);

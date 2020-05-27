@@ -17,41 +17,11 @@ export default {
     return {
       noticeArray: [
         {
-          notice: "撒娇开发的时间年福建福建三分还是你飞拉萨沙发的,撒娇开发的时间年福建福建三分还是你飞拉萨沙发的,撒娇开发的时间年福建福建三分还是你飞拉萨沙发的"
+          notice: "欢迎来到智能化组队系统，您可以在这里寻找志同道合的人组成团队"
         },
         {
-          notice: "askjfhdasujfhujadhfujadkfdajhf"
+          notice: "计算机设计大赛即将举行，有兴趣的同学可以组队参加"
         },
-        {
-          notice: "撒娇开发的时间年福建福建三分还是你飞拉萨沙发的"
-        },
-        {
-          notice: "askjfhdasujfhujadhfujadkfdajhf"
-        },
-        {
-          notice: "撒娇开发的时间年福建福建三分还是你飞拉萨沙发的"
-        },
-        {
-          notice: "askjfhdasujfhujadhfujadkfdajhf"
-        },
-        {
-          notice: "撒娇开发的时间年福建福建三分还是你飞拉萨沙发的,撒娇开发的时间年福建福建三分还是你飞拉萨沙发的,撒娇开发的时间年福建福建三分还是你飞拉萨沙发的"
-        },
-        {
-          notice: "askjfhdasujfhujadhfujadkfdajhf"
-        },
-        {
-          notice: "撒娇开发的时间年福建福建三分还是你飞拉萨沙发的"
-        },
-        {
-          notice: "askjfhdasujfhujadhfujadkfdajhf"
-        },
-        {
-          notice: "撒娇开发的时间年福建福建三分还是你飞拉萨沙发的"
-        },
-        {
-          notice: "askjfhdasujfhujadhfujadkfdajhf"
-        }
       ]
     }
   }

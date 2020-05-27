@@ -106,26 +106,31 @@
 			text-align: left;
       word-break: break-all;
       padding: 20px;
-      position: relative;
+			position: relative;
 			img {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
 				border-radius: 50%;
-        border: 1px solid black;
+        // border: 1px solid black;
         vertical-align: middle;
       }
       span{
         line-height: 20px;
         padding-left: 10px;
       }
-      p{
+      .msg-content-box{
         background: #fff;
         border-radius: 5px;
-        padding: 1px 5px;
+				padding: 10px 6px;
+				margin: 15px 20px 15px 0;
+				p{
+					margin: 0;
+				}
       }
 
       .inner {
-        // width: 265px;
+				// width: 265px;
+				width: calc(100% - 40px);
         height: calc(100% - 40px);
         position: absolute;
         /*cursor: pointer;*/
