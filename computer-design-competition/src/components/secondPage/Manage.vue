@@ -51,6 +51,12 @@ export default {
         },
         {
           id: 123456,
+          img: require('@/assets/image/head/head9.jpg'),
+          nickname: "路飞",
+          personalSkill: "擅长前端"
+        },
+        {
+          id: 123456,
           img: require('@/assets/image/head/head2.jpg'),
           nickname: "沙雕程序员",
           personalSkill: "精于java"
@@ -98,6 +104,12 @@ export default {
           img: require('@/assets/image/head/head1.jpg'),
           nickname: "取个名字真难",
           personalSkill: "擅长前端,vue"
+        },
+        {
+          id: 123456,
+          img: require('@/assets/image/head/head9.jpg'),
+          nickname: "路飞",
+          personalSkill: "擅长前端"
         },
         {
           id: 123456,
@@ -260,7 +272,7 @@ export default {
       this.paging(1);
     },
     invite(){
-      this.$router.push({name: 'Message', params: {messageKind:'snotice'}})
+      // this.$router.push({name: 'Message', params: {messageKind:'snotice'}})
     },
     message(){
       this.$router.push({name: 'Message', params: {messageKind:'privateMessage'}})

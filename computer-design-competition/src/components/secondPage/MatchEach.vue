@@ -52,7 +52,21 @@ export default {
     //   })
     // },
     invite(){
-      this.$router.push({name: 'Message', params: {messageKind:'snotice'}})
+      let token = localStorage.getItem('token');
+      api.invite({
+        type: 'invite',
+        data: {
+          team_id: this.matchInfo.team_id,
+          inviter_id: this.matchInfo.team_leader,
+          invited_id: token
+        }
+      }).then(res => {
+        console.log(res)
+        if(res.data.status == 0){
+          this.$router.push({name: 'Message', params: {messageKind:'snotice'}})
+        }
+      })
+      // this.$router.push({name: 'Message', params: {messageKind:'snotice'}})
     },
     message(){
       this.$router.push({name: 'Message', params: {messageKind:'privateMessage'}})

@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="msg-content clearfix">
-      <div class="msg-content-head">取个名字真难</div>
+      <div class="msg-content-head">路飞</div>
       <div class="msg-content-content">
         <div class="inner">
           <div class="innerbox">
@@ -52,8 +52,8 @@ export default {
   },
   data() {
     return {
-      user: "路飞",
-      img: require("@/assets/image/head/head9.jpg"),
+      user: "取个名字真难",
+      img: require("@/assets/image/head/head1.jpg"),
       detail: "",
       isClear: false,
       thisIndex: 0,
@@ -106,8 +106,8 @@ export default {
       //   },
       msgList: [
         {
-          talker: "取个名字真难",
-          img: require('@/assets/image/head/head1.jpg'),
+          talker: "路飞",
+          img: require('@/assets/image/head/head9.jpg'),
           content: "好的"
         },
         {
@@ -131,6 +131,7 @@ export default {
         content: this.detail
       };
       this.conversation.push(obj);
+      this.content = "";
       // let token = localStorage.getItem('token');
       // api.sendmsg({
       //   type: "msg",
@@ -150,18 +151,18 @@ export default {
   },
   created() {
     // 482508834
-    // let token = localStorage.getItem("token");
-    // api
-    //   .getmsgList({
-    //     type: "msg",
-    //     data: {
-    //       user_id: "token"
-    //     }
-    //   })
-    //   .then(res => {
-    //     console.log(res);
-    //     this.msgList = res.data.data.id_list;
-    //   });
+    let token = localStorage.getItem("token");
+    api
+      .getmsgList({
+        type: "msg",
+        data: {
+          user_id: token
+        }
+      })
+      .then(res => {
+        console.log(res);
+        this.msgList = res.data.data.id_list;
+      });
   }
 };
 </script>

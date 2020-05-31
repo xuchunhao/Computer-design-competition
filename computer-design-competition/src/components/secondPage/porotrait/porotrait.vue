@@ -139,7 +139,10 @@ export default {
             base64: res
           }
         }).then(res => {
-          console.log(res)
+          if(res.data.status == 0){
+            this.$router.go(0)
+          }
+          // console.log(res)
           // this.$router.go(0)
         })
         //res是裁剪后图片的bolb对象

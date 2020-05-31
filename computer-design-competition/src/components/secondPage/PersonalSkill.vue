@@ -43,6 +43,13 @@ export default {
         }
       }).then(res => {
         console.log(res)
+        if(res.data.status == 0){
+          this.$message({
+            message: "修改成功",
+            type: "success",
+            offset: 100
+          });
+        }
       })
     }
   },

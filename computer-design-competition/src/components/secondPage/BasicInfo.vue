@@ -50,14 +50,14 @@ export default {
       follower_num: 0,
       star_num: 0,
       userinfo: {
-        // user: "作者1",
+        user: "作者1",
         // img: require("@/assets/image/test.jpg"),
         // concernsNum: 321,
         // fansNum: 456,
         // likesNum: 789,
-        // phone: 123456,
-        // name: 123,
-        // nickname: 123
+        phone: 123456,
+        name: 123,
+        nickname: 123
       }
     };
   },

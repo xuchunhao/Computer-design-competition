@@ -143,34 +143,37 @@ export default {
     },
     paging(e) {
       let chunk = 4;
+      console.log(this.tempList, this.dynamicList);
       this.tempList = this.dynamicList.slice((e - 1) * chunk, e * chunk);
     },
     timechange(time) {
-      let day = time.slice(5, 7);
-      let month = time.slice(8, 11);
-      let minute = time.slice(17, 25);
-      let newMonth;
-      let en_mon_arr = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Spt",
-        "Oct",
-        "Nov",
-        "Dec"
-      ];
-      for (var i = 0; i < en_mon_arr.length; i++) {
-        //循环匹配
-        if (month == en_mon_arr[i]) {
-          newMonth = i;
+      if (time) {
+        let day = time.slice(5, 7);
+        let month = time.slice(8, 11);
+        let minute = time.slice(17, 25);
+        let newMonth;
+        let en_mon_arr = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Spt",
+          "Oct",
+          "Nov",
+          "Dec"
+        ];
+        for (var i = 0; i < en_mon_arr.length; i++) {
+          //循环匹配
+          if (month == en_mon_arr[i]) {
+            newMonth = i;
+          }
         }
+        return newMonth + "-" + day + "," + minute;
       }
-      return newMonth + "-" + day + "," + minute;
     }
   },
   created() {
