@@ -125,25 +125,26 @@ export default {
   },
   methods: {
     send(e) {
-      let obj = {
-        name: this.user,
-        img: this.img,
-        content: this.detail
-      };
-      this.conversation.push(obj);
-      this.content = "";
-      // let token = localStorage.getItem('token');
-      // api.sendmsg({
-      //   type: "msg",
-      //   data: {
-      //     sender_id: token,
-      //     recever_id: '482508834',
-      //     content: this.detail,
-      //     title: ''
-      //   }
-      // }).then(res => {
-      //   console.log(res)
-      // })
+      // let obj = {
+      //   name: this.user,
+      //   img: this.img,
+      //   content: this.detail
+      // };
+      // this.conversation.push(obj);
+      // this.content = "";
+
+      let token = localStorage.getItem('token');
+      api.sendmsg({
+        type: "msg",
+        data: {
+          sender_id: token,
+          recever_id: '482508834',
+          content: this.detail,
+          title: ''
+        }
+      }).then(res => {
+        console.log(res)
+      })
     },
     changeIndex(index) {
       this.thisIndex = index;
