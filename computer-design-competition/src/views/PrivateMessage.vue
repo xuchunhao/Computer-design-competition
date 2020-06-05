@@ -160,6 +160,7 @@ export default {
               sender_id: token
             };
             this.conversation.push(obj);
+            this.detail = "";
           }
         });
     },
