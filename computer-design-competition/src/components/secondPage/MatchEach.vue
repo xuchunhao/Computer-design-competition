@@ -57,8 +57,8 @@ export default {
         type: 'invite',
         data: {
           team_id: this.matchInfo.team_id,
-          inviter_id: this.matchInfo.team_leader,
-          invited_id: token
+          inviter_id: token,
+          invited_id: this.matchInfo.team_leader
         }
       }).then(res => {
         console.log(res)
@@ -69,6 +69,25 @@ export default {
       // this.$router.push({name: 'Message', params: {messageKind:'snotice'}})
     },
     message(){
+      let token = localStorage.getItem("token");
+      api
+        .sendmsg({
+          type: "msg",
+          data: {
+            sender_id: token,
+            recever_id: this.matchInfo.team_leader,
+            content: "",
+            title: ""
+          }
+        })
+        .then(res => {
+          if (res.data.status == 0) {
+            this.$router.push({
+              name: "Message",
+              params: { messageKind: "privateMessage" }
+            });
+          }
+        });
       this.$router.push({name: 'Message', params: {messageKind:'privateMessage'}})
     }
   },

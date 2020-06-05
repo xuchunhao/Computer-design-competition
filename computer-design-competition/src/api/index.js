@@ -87,6 +87,12 @@ var api = {
   },
   invite(params){
     return axios.post('/api/invite', params)
+  },
+  lastestmsg(params){
+    return axios.post('/api/lastestmsg', params)
+  },
+  usersearch(params){
+    return axios.post('/api/usersearch',params)
   }
 }
 
