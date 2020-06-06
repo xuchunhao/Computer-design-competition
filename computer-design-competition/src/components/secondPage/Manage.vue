@@ -338,7 +338,10 @@ export default {
         }
       })
       .then(res => {
-        let newArr = res.data.map(function(msg, index, arr) {
+        let arr = res.data.filter(function(msg, index, arr) {
+          return msg != "88888888";
+        });
+        let newArr = arr.map(function(msg, index, arr) {
           let newMsg = {};
           newMsg.msgid = msg;
           api
