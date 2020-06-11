@@ -1,5 +1,6 @@
 <template>
   <div class="introduce">
+    <home-nav/>
     <div class="container">
       <el-row class="introduce-box">
         <el-col :md="12">
@@ -31,7 +32,7 @@
           <div class="introduce-text">你可以关注喜欢的用户，及时了解他的动态，并可以和他即时聊天，分享技能和组队</div>
         </el-col>
       </el-row>
-      <carousel/>
+      <carousel />
       <div class="reaction-box">
         <h1>反馈</h1>
         <el-row class="reaction-input">
@@ -57,18 +58,20 @@
 
 <script>
 import "@/assets/css/index/introduce.less";
-import Carousel from '@/components/index/homepage/Carousel'
+import Carousel from "@/components/index/homepage/Carousel";
+import HomeNav from '@/components/index/homepage/HomeNav';
 
 export default {
   data() {
     return {
-      config:{
-        sites   : ['qzone', 'qq', 'weibo','wechat'], // 启用的站点
-      },
+      config: {
+        sites: ["qzone", "qq", "weibo", "wechat"] // 启用的站点
+      }
     };
   },
   components: {
-    Carousel
+    Carousel,
+    HomeNav
   }
 };
 </script>

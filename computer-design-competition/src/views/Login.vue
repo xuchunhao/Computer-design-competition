@@ -55,7 +55,7 @@ export default {
                 offset: 100
               });
               localStorage.setItem("token", res.data.data.token);
-              this.$router.push({ path: "/secondPage/blog"});
+              this.$router.push({ path: "/secondPage/firstPage"});
             } else {
               this.$message({
                 message: "登录失败",

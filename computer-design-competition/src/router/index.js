@@ -80,6 +80,10 @@ Vue.use(VueRouter)
         path: '/secondPage/personalSkill',
         name: 'PersonalSkill',
         component: () => import('@/components/secondPage/PersonalSkill.vue')
+      },{
+        path: '/secondPage/firstPage',
+        name: 'FirstPage',
+        component: () => import('@/components/secondPage/FirstPage.vue')
       }
     ]
   },
