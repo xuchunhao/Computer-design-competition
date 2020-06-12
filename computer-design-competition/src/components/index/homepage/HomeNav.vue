@@ -11,16 +11,16 @@
           @select="handleSelect"
         >
           <el-menu-item index="-2">
-            <router-link to="/secondPage/firstPage" tag="div">主页</router-link>
+            <router-link to="/index" tag="div">主页</router-link>
+          </el-menu-item>
+          <el-menu-item index="1">
+            <router-link to="/secondPage/match" tag="div">我要入队</router-link>
+          </el-menu-item>
+          <el-menu-item index="-1">
+            <router-link to="/secondPage/manage" tag="div">我要组队</router-link>
           </el-menu-item>
           <el-menu-item index="0">
             <router-link to="/secondPage/blog" tag="div">博客</router-link>
-          </el-menu-item>
-          <el-menu-item index="-1">
-            <router-link to="/secondPage/manage" tag="div">管理</router-link>
-          </el-menu-item>
-          <el-menu-item index="1">
-            <router-link to="/secondPage/match" tag="div">需求大厅</router-link>
           </el-menu-item>
           <el-menu-item index="2">
             <router-link to="/secondPage/dynamic" tag="div">好友动态</router-link>

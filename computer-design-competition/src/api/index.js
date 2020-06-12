@@ -93,7 +93,13 @@ var api = {
   },
   usersearch(params){
     return axios.post('/api/usersearch',params)
-  }
+  },
+  teamint(params){
+    return axios.post('/api/teamint',params)
+  },
+  searchdem(params){
+    return axios.post('/api/searchdem',params)
+  },
 }
 
 export default api; 

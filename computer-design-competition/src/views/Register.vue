@@ -61,7 +61,7 @@ export default {
 // // ...  
 // localStorage.setItem("bar", foo);  
               localStorage.setItem("token", res.data.data.token);
-              this.$router.push({ path: "/secondPage/blog"});
+              this.$router.push({ path: "/index"});
             } else {
               this.$message({
                 message: "注册失败",

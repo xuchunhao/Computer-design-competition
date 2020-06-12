@@ -84,6 +84,10 @@ Vue.use(VueRouter)
         path: '/secondPage/firstPage',
         name: 'FirstPage',
         component: () => import('@/components/secondPage/FirstPage.vue')
+      },{
+        path: '/secondPage/teamInt',
+        name: 'TeamInt',
+        component: () => import('@/components/secondPage/TeamInt.vue')
       }
     ]
   },

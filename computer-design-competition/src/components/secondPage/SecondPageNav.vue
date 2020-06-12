@@ -10,13 +10,13 @@
           @select="handleSelect"
         >
           <el-menu-item index="-2">
-            <router-link to="/secondPage/firstPage" tag="div">主页</router-link>
+            <router-link to="/index" tag="div">主页</router-link>
+          </el-menu-item>
+          <el-menu-item index="1">
+            <router-link to="/secondPage/match" tag="div">我要入队</router-link>
           </el-menu-item>
           <el-menu-item index="-1">
             <router-link to="/secondPage/manage" tag="div">我要组队</router-link>
-          </el-menu-item>
-          <el-menu-item index="1">
-            <router-link to="/secondPage/match" tag="div">需求大厅</router-link>
           </el-menu-item>
           <el-menu-item index="0">
             <router-link to="/secondPage/blog" tag="div">博客</router-link>
@@ -47,9 +47,6 @@
             <el-menu-item index="4-3">
               <router-link to="/secondPage/personalPage" tag="div">个人主页</router-link>
             </el-menu-item>
-            <el-menu-item index="4-4">
-              <router-link to="/index" tag="div">退出</router-link>
-            </el-menu-item>
           </el-submenu>
         </el-menu>
       </div>
@@ -63,7 +60,7 @@ import "@/assets/css/secondPage/secondPageNav.less";
 export default {
   data() {
     return {
-      activeIndex: "-2"
+      activeIndex: ""
     };
   },
   methods: {

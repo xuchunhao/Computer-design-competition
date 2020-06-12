@@ -1,7 +1,7 @@
 <template>
   <div class="manage">
-    <div class="container">
-      <div class="input-content">
+    <div class="container manage-box">
+      <!-- <div class="input-content">
         <div class="input-box">
           个人技能：
           <el-input v-model="specialty"></el-input>
@@ -11,11 +11,12 @@
           <el-input v-model="msgAuthorName"></el-input>
         </div>
         <el-button icon="el-icon-search" @click="search">搜索</el-button>
-      </div>
+      </div>-->
       <div class="input-content">
         <div class="input-box">
-          队伍id：
+          输入队伍id：
           <el-input v-model="teamid"></el-input>
+          <router-link class="fl-r" to="/secondPage/teamInt" tag="el-button">发布意向</router-link>
         </div>
       </div>
       <table>
@@ -23,20 +24,22 @@
           <tr>
             <th>用户名</th>
             <th>头像</th>
-            <th>个人技能</th>
+            <th>个人介绍</th>
+            <th>组队意向</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(person, index) in endArray" :key="index">
             <td>{{ person.msgAuthorName }}</td>
-            <td>
+            <td class="img">
               <img :src="person.img" alt />
             </td>
-            <td>{{ person.specialty }}</td>
+            <td>{{ person.introduct }}</td>
+            <td>{{ person.intention }}</td>
             <td>
-              <el-button type="danger" @click="invite(person.msgid)">邀请</el-button>
-              <el-button type="success" @click="message(person.msgid)">私信</el-button>
+              <el-button type="danger" @click="invite(person.user_id)">邀请</el-button>
+              <el-button type="success" @click="message(person.user_id)">私信</el-button>
             </td>
           </tr>
         </tbody>
@@ -279,13 +282,13 @@ export default {
       let chunk = 8;
       this.endArray = this.tempArray.slice((e - 1) * chunk, e * chunk);
     },
-    search() {
-      var that = this;
-      this.tempArray = this.personArray.filter(function(person) {
-        return person.specialty != undefined && person.specialty.indexOf(that.specialty) > -1 && person.msgAuthorName.indexOf(that.msgAuthorName) > -1
-      });
-      this.paging(1);
-    },
+    // search() {
+    //   var that = this;
+    //   this.tempArray = this.personArray.filter(function(person) {
+    //     return person.specialty != undefined && person.specialty.indexOf(that.specialty) > -1 && person.msgAuthorName.indexOf(that.msgAuthorName) > -1
+    //   });
+    //   this.paging(1);
+    // },
     invite(invited_id) {
       let token = localStorage.getItem("token");
       api
@@ -330,52 +333,34 @@ export default {
     }
   },
   created() {
-    api
-      .usersearch({
-        type: "user",
-        data: {
-          content: ""
-        }
-      })
-      .then(res => {
-        let arr = res.data.filter(function(msg, index, arr) {
-          return msg != "88888888";
-        });
-        let newArr = arr.map(function(msg, index, arr) {
-          let newMsg = {};
-          newMsg.msgid = msg;
+    api.searchdem({
+      type: "teamser",
+      data: {
+        content: ""
+      }
+    }).then(res => {
+      let newArr = res.data.data.map(function(team, index, arr) {
           api
             .infoSearch({
               type: "user_info",
               data: {
-                user_id: msg
+                user_id: team.user_id
               }
             })
             .then(res => {
-              newMsg.msgAuthorName = res.data.data.nick_name;
+              team.msgAuthorName = res.data.data.nick_name;
             });
           api
             .loadimg({
               type: "img",
               data: {
-                user_id: msg
+                user_id: team.user_id
               }
             })
             .then(res => {
-              newMsg.img = res.data.data.base64;
+              team.img = res.data.data.base64;
             });
-          api
-            .getaddinfo({
-              type: "info",
-              data: {
-                user_id: msg
-              }
-            })
-            .then(res => {
-              let infoList = res.data.data.info_list;
-              newMsg.specialty = infoList.specialty;
-            });
-          return newMsg;
+          return team;
         });
 
         var that = this;
@@ -386,7 +371,62 @@ export default {
         }, 800);
       });
     this.paging(1);
-    // this.total = this.tempArray.length/10;
+    // api
+    //   .usersearch({
+    //     type: "user",
+    //     data: {
+    //       content: ""
+    //     }
+    //   })
+    //   .then(res => {
+    //     let arr = res.data.filter(function(msg, index, arr) {
+    //       return msg != "88888888";
+    //     });
+    //     let newArr = arr.map(function(msg, index, arr) {
+    //       let newMsg = {};
+    //       newMsg.msgid = msg;
+    //       api
+    //         .infoSearch({
+    //           type: "user_info",
+    //           data: {
+    //             user_id: msg
+    //           }
+    //         })
+    //         .then(res => {
+    //           newMsg.msgAuthorName = res.data.data.nick_name;
+    //         });
+    //       api
+    //         .loadimg({
+    //           type: "img",
+    //           data: {
+    //             user_id: msg
+    //           }
+    //         })
+    //         .then(res => {
+    //           newMsg.img = res.data.data.base64;
+    //         });
+    //       api
+    //         .getaddinfo({
+    //           type: "info",
+    //           data: {
+    //             user_id: msg
+    //           }
+    //         })
+    //         .then(res => {
+    //           let infoList = res.data.data.info_list;
+    //           newMsg.specialty = infoList.specialty;
+    //         });
+    //       return newMsg;
+    //     });
+
+    //     var that = this;
+    //     setTimeout(function() {
+    //       that.personArray = newArr;
+    //       that.tempArray = that.personArray;
+    //       that.paging(1);
+    //     }, 800);
+    //   });
+    // this.paging(1);
   }
 };
 </script>

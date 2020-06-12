@@ -5,7 +5,7 @@
         <el-input class="match-search" placeholder="搜索你想要的比赛" v-model="match">
           <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
         </el-input>
-        <router-link to="/secondPage/matchSubmit" tag="el-button" class="match-btn">发布需求</router-link>
+        <router-link to="/secondPage/matchSubmit" tag="el-button" class="match-btn">组建队伍</router-link>
       </div>
       <div class="match-box">
         <el-row>
