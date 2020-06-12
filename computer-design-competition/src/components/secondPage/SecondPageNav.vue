@@ -7,7 +7,6 @@
           :default-active="activeIndex"
           class="el-menu-demo"
           mode="horizontal"
-          @select="handleSelect"
         >
           <el-menu-item index="-2">
             <router-link to="/index" tag="div">主页</router-link>
@@ -37,7 +36,7 @@
             </el-menu-item>
           </el-submenu>
           <el-submenu index="4">
-            <template slot="title">个人中心</template>
+            <template slot="title"><img :src="img" alt /></template>
             <el-menu-item index="4-1">
               <router-link to="/secondPage/basicInfo" tag="div">基本资料</router-link>
             </el-menu-item>
@@ -46,6 +45,9 @@
             </el-menu-item>
             <el-menu-item index="4-3">
               <router-link to="/secondPage/personalPage" tag="div">个人主页</router-link>
+            </el-menu-item>
+            <el-menu-item index="4-4">
+              <div @click="exit">退出账号</div>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -56,16 +58,36 @@
 
 <script>
 import "@/assets/css/secondPage/secondPageNav.less";
+import api from "@/api/index.js";
 
 export default {
   data() {
     return {
-      activeIndex: ""
+      activeIndex: "",
+      token: undefined,
+      img: ""
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+    exit() {
+      localStorage.setItem("token", "");
+      this.token = localStorage.getItem("token");
+      this.$router.push('/index');
+    }
+  },
+  created() {
+    this.token = localStorage.getItem("token");
+    if (this.token) {
+      api
+        .loadimg({
+          type: "img",
+          data: {
+            user_id: this.token
+          }
+        })
+        .then(res => {
+          this.img = res.data.data.base64;
+        });
     }
   }
 };
