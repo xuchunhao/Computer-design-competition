@@ -8,7 +8,7 @@
       <div class="dynamic-each" v-for="(dynamic, index) in tempList" :key="index">
         <img :src="dynamic.img" alt />
         <h2>{{ dynamic.user }}</h2>
-        <p class="time">{{ dynamic.create_time }}</p>
+        <p class="time">{{ dynamic.creat_time }}</p>
         <div v-html="dynamic.upd_text"></div>
       </div>
       <el-pagination @current-change="paging" layout="prev, pager, next" :total="total*10"></el-pagination>
@@ -209,8 +209,8 @@ export default {
             .then(res => {
               dynamic.img = res.data.data.base64;
             });
-          let time = that.timechange(dynamic.create_time);
-          dynamic.create_time = time;
+          let time = that.timechange(dynamic.creat_time);
+          dynamic.creat_time = time;
           return dynamic;
         });
         // let that = this;

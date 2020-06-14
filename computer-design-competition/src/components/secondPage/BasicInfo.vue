@@ -55,9 +55,9 @@ export default {
         // concernsNum: 321,
         // fansNum: 456,
         // likesNum: 789,
-        phone: 123456,
-        name: 123,
-        nickname: 123
+        phone: "游客账号",
+        name: "游客姓名",
+        nickname: "游客昵称"
       }
     };
   },
