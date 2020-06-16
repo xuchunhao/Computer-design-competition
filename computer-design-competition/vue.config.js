@@ -5,7 +5,7 @@ module.exports = {
     port: '10086',
     proxy:{
       '/api': {
-        target: 'http://mmerak.cn'
+        target: 'http://111.231.231.118'
       },
       // '/user': {
       //   target: 'http://111.231.231.118'
