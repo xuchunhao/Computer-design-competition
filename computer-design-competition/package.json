@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "element-ui": "^2.13.0",
     "social-share.js": "^1.0.16",
     "vue": "^2.6.11",
